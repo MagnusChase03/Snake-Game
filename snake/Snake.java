@@ -50,6 +50,8 @@ public class Snake {
             apple.move();
         }
 
+        hitEdge(board);
+
         hitSelf(board);
 
         if (cords.size() > size) {
@@ -75,5 +77,25 @@ public class Snake {
             }
         }
         return false;
+    }
+
+    public boolean hitEdge(Board board) {
+        int x = cords.get(0)[0];
+        int y = cords.get(0)[1];
+        if (x > 40) {
+            board.running = false;
+            return true;
+        } else if (x < 0) {
+            board.running = false;
+            return true;
+        } else if (y > 28) {
+            board.running = false;
+            return true;
+        } else if (y < 0) {
+            board.running = false;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
