@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Apple {
 
-    ArrayList<int[]> cord = new ArrayList<int[]>();
+    public ArrayList<int[]> cord = new ArrayList<int[]>();
 
     public Apple() {
 

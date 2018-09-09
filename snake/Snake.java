@@ -5,9 +5,9 @@ import java.awt.*;
 
 public class Snake {
 
-    ArrayList<int[]> cords = new ArrayList<int[]>();
-    String direction = "r";
-    int size = 4;
+    public ArrayList<int[]> cords = new ArrayList<int[]>();
+    public String direction = "r";
+    public int size = 4;
 
     public Snake() {
 
@@ -45,13 +45,8 @@ public class Snake {
                 break;
         }
 
-        if (hitApple(apple)) {
-            size+=1;
-            apple.move();
-        }
-
+        hitApple(apple, board);
         hitEdge(board);
-
         hitSelf(board);
 
         if (cords.size() > size) {
@@ -59,9 +54,12 @@ public class Snake {
         }
     }
 
-    public boolean hitApple(Apple apple) {
+    public boolean hitApple(Apple apple, Board board) {
 
         if (cords.get(0)[0] == apple.cord.get(0)[0] && cords.get(0)[1] == apple.cord.get(0)[1]) {
+            size+=1;
+            apple.move();
+            board.score+=1;
             return true;
         } else {
             return false;

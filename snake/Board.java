@@ -10,6 +10,7 @@ public class Board extends JPanel implements Runnable {
     public static Snake snake;
     public static Apple apple;
     public boolean running = true;
+    public int score = 0;
 
     @Override
     public void run() {
@@ -36,8 +37,17 @@ public class Board extends JPanel implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, 800, 600);
 
-        snake.drawSnake(g, apple, this);
+        drawScore(g);
+
         apple.drawApple(g);
+        snake.drawSnake(g, apple, this);
+    }
+
+    public void drawScore(Graphics g) {
+
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Times New Roman", Font.BOLD, 24));
+        g.drawString("Score: " + score, 40, 40);
     }
 }
 
