@@ -9,11 +9,12 @@ public class Board extends JPanel implements Runnable {
 
     public static Snake snake;
     public static Apple apple;
+    public boolean running = true;
 
     @Override
     public void run() {
 
-        while (true) {
+        while (running) {
             repaint();
             try {Thread.sleep(200);} catch (Exception e) {}
         }
@@ -36,7 +37,7 @@ public class Board extends JPanel implements Runnable {
         g.fillRect(0, 0, 800, 600);
 
         makeGrid(g);
-        snake.drawSnake(g, apple);
+        snake.drawSnake(g, apple, this);
         apple.drawApple(g);
     }
 

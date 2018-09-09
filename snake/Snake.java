@@ -17,9 +17,9 @@ public class Snake {
         cords.add(2, new int[] {0, 10});
     }
 
-    public void drawSnake(Graphics g, Apple apple) {
+    public void drawSnake(Graphics g, Apple apple, Board board) {
 
-        moveSnake(apple);
+        moveSnake(apple, board);
 
         g.setColor(Color.GREEN);
         for (int i = 0; i < cords.size(); i++) {
@@ -27,7 +27,7 @@ public class Snake {
         }
     }
 
-    public void moveSnake(Apple apple) {
+    public void moveSnake(Apple apple, Board board) {
         int[] head = {cords.get(0)[0], cords.get(0)[1]};
 
         switch (direction) {
@@ -50,6 +50,8 @@ public class Snake {
             apple.move();
         }
 
+        hitSelf(board);
+
         if (cords.size() > size) {
             cords.remove(cords.size() - 1);
         }
@@ -62,5 +64,16 @@ public class Snake {
         } else {
             return false;
         }
+    }
+
+    public boolean hitSelf(Board board) {
+
+        for (int i = 1; i < cords.size(); i++) {
+            if (cords.get(0)[0] == cords.get(i)[0] && cords.get(0)[1] == cords.get(i)[1]) {
+                board.running = false;
+                return true;
+            }
+        }
+        return false;
     }
 }
