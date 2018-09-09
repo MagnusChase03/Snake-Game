@@ -36,19 +36,8 @@ public class Board extends JPanel implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, 800, 600);
 
-        makeGrid(g);
         snake.drawSnake(g, apple, this);
         apple.drawApple(g);
-    }
-
-    private void makeGrid(Graphics g) {
-
-        g.setColor(Color.WHITE);
-        for (int x = 0; x < 800; x+=20) {
-            for (int y = 0; y < 560; y+=20) {
-                g.drawRect(x, y, 20, 20);
-            }
-        }
     }
 }
 
