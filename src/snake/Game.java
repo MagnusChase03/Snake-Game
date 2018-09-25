@@ -49,7 +49,7 @@ public class Game extends JPanel implements Runnable {
 
                 try {
 
-                    Thread.sleep(200);
+                    Thread.sleep(100);
 
                 } catch (Exception e) {}
             }
